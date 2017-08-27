@@ -21,17 +21,18 @@ originalObj.readWrite = (callback) => {
 
     for(let i = 0; i < x.length; i += 4) {
       if(x[i]);
-      // console.log(x[i], x[i + 1], x[i + 2], x[i + 3]);
-      let greyScale = [(x[i])/3, (x[i + 1])/3, (x[i + 2])/3, (x[i + 3])/3];
-      console.log(greyScale);
-      return greyScale;
+      let greyImg = [(x[i])/3, (x[i + 1])/3, (x[i + 2])/3, (x[i + 3])/3];
+
+      // let greyScale = greyImg;
+      // console.log('this is outside of the writeFile function:', greyImg);
+
+      fs.writeFile(`${__dirname}/../../assets/greyscale-bitmap.bmp`, greyImg, (err) => {
+        if (err) console.error(err);
+        console.log('Isaiah was here', greyImg);
+        return greyImg;
+      });
     }
-    callback();
   });
-
-  fs.writeFile(`${__dirname}/../../assets/greyscale-bitmap.bmp`, originalObj, (err) => {
-    if (err) console.error(err);
-
-  });
+  callback;
 };
 originalObj.readWrite();
