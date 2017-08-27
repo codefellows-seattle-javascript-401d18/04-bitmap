@@ -17,22 +17,14 @@ originalObj.readWrite = (callback) => {
 
     let x = bmp.pixelArray;
 
-    // console.log('This is the pixelArray', x);
-
-    for(let i = 0; i < x.length; i += 4) {
-      if(x[i]);
-      let greyImg = [(x[i])/3, (x[i + 1])/3, (x[i + 2])/3, (x[i + 3])/3];
-
-      // let greyScale = greyImg;
-      // console.log('this is outside of the writeFile function:', greyImg);
-
-      fs.writeFile(`${__dirname}/../../assets/greyscale-bitmap.bmp`, greyImg, (err) => {
-        if (err) console.error(err);
-        console.log('Isaiah was here', greyImg);
-        return greyImg;
-      });
+    // console.log('This is the pixelArray', x)
     }
+  callback();
   });
-  callback;
+
+  fs.writeFile(`${__dirname}/../../assets/greyscale-bitmap.bmp`, originalObj, (err) => {
+    if (err) console.error(err);
+
+  });
 };
 originalObj.readWrite();
