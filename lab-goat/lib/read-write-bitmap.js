@@ -17,18 +17,11 @@ originalObj.readWrite = (callback) => {
 
     let x = bmp.pixelArray;
 
-<<<<<<< HEAD
-    // console.log('This is the pixelArray', x)
-    }
-  callback(); 
-  });
-=======
     // console.log('This is the pixelArray', x);
 
     for(let i = 0; i < x.length; i += 4) {
       if(x[i]);
       let greyImg = [(x[i])/3, (x[i + 1])/3, (x[i + 2])/3, (x[i + 3])/3];
->>>>>>> b717491e7c7ae466abadb58e9d6ac720a44277f9
 
       // let greyScale = greyImg;
       // console.log('this is outside of the writeFile function:', greyImg);
