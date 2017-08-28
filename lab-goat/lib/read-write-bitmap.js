@@ -25,16 +25,13 @@ originalObj.greyOut = (callback) => {
       // let greyScale = greyImg;
       // console.log('this is outside of the writeFile function:', greyImg);
 
-      fs.writeFile(`${__dirname}/../../assets/greyscale-bitmap.bmp`, bmp.allData, (err) => {
+      fs.writeFile(`${__dirname}/../../assets/test-bitmap.bmp`, bmp.allData, (err) => {
         if (err) console.error(err);
-        console.log('Isaiah was here', greyImg);
-        return greyImg;
       });
     }
   });
   callback;
 };
-originalObj.greyOut();
 
 originalObj.invertColor = (callback) => {
 
@@ -56,15 +53,13 @@ originalObj.invertColor = (callback) => {
       // let greyScale = greyImg;
       // console.log('this is outside of the writeFile function:', greyImg);
 
-      fs.writeFile(`${__dirname}/../../assets/inverted-bitmap.bmp`, bmp.allData, (err) => {
+      fs.writeFile(`${__dirname}/../../assets/test-bitmap.bmp`, bmp.allData, (err) => {
         if (err) console.error(err);
       });
     }
   });
   callback;
 };
-
-originalObj.invertColor();
 
 
 originalObj.whiteOut = (callback) => {
@@ -87,12 +82,10 @@ originalObj.whiteOut = (callback) => {
       // let greyScale = greyImg;
       // console.log('this is outside of the writeFile function:', greyImg);
 
-      fs.writeFile(`${__dirname}/../../assets/black-bitmap.bmp`, bmp.allData, (err) => {
+      fs.writeFile(`${__dirname}/../../assets/test-bitmap.bmp`, bmp.allData, (err) => {
         if (err) console.error(err);
       });
     }
   });
   callback;
 };
-
-originalObj.whiteOut();
