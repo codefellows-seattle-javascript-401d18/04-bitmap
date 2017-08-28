@@ -6,7 +6,7 @@ const fs = require('fs');
 
 let originalObj = module.exports = {};
 
-originalObj.readWrite = (callback) => {
+originalObj.greyOut = (callback) => {
 
   fs.readFile(`${__dirname}/../../assets/palette-bitmap.bmp`, (err, data) => {
     if (err) console.error(err);
@@ -20,19 +20,72 @@ originalObj.readWrite = (callback) => {
     // console.log('This is the pixelArray', x);
 
     for(let i = 0; i < x.length; i += 4) {
-      if(x[i]);
-      let greyImg = [(x[i])/3, (x[i + 1])/3, (x[i + 2])/3, (x[i + 3])/3];
-
+      let greyImg = [(x[i]) + x[i+1] + x[i+2]/3];
+      x[i] = x[i+1] = x[i+2] = greyImg;
       // let greyScale = greyImg;
       // console.log('this is outside of the writeFile function:', greyImg);
 
-      fs.writeFile(`${__dirname}/../../assets/greyscale-bitmap.bmp`, greyImg, (err) => {
+      fs.writeFile(`${__dirname}/../../assets/test-bitmap.bmp`, bmp.allData, (err) => {
         if (err) console.error(err);
-        console.log('Isaiah was here', greyImg);
-        return greyImg;
       });
     }
   });
   callback;
 };
-originalObj.readWrite();
+
+originalObj.invertColor = (callback) => {
+
+  fs.readFile(`${__dirname}/../../assets/palette-bitmap.bmp`, (err, data) => {
+    if (err) console.error(err);
+    let bmp = new Bitmap(data);
+
+    // console.log('Here is the constructor bmp:', bmp);
+    // console.log('Here is the bmp constructor property pixelArray:', bmp.pixelArray);
+
+    let x = bmp.pixelArray;
+
+    // console.log('This is the pixelArray', x);
+
+    for(let i = 0; i < x.length; i += 4) {
+      x[i] = 255 - x[i];
+      x[i+1] = 255 - x[i+1];
+      x[i+2] = 255 - x[i+2];
+      // let greyScale = greyImg;
+      // console.log('this is outside of the writeFile function:', greyImg);
+
+      fs.writeFile(`${__dirname}/../../assets/test-bitmap.bmp`, bmp.allData, (err) => {
+        if (err) console.error(err);
+      });
+    }
+  });
+  callback;
+};
+
+
+originalObj.whiteOut = (callback) => {
+
+  fs.readFile(`${__dirname}/../../assets/palette-bitmap.bmp`, (err, data) => {
+    if (err) console.error(err);
+    let bmp = new Bitmap(data);
+
+    // console.log('Here is the constructor bmp:', bmp);
+    // console.log('Here is the bmp constructor property pixelArray:', bmp.pixelArray);
+
+    let x = bmp.pixelArray;
+
+    // console.log('This is the pixelArray', x);
+
+    for(let i = 0; i < x.length; i += 4) {
+      x[i] = 255;
+      x[i+1] = 255;
+      x[i+2] = 255;
+      // let greyScale = greyImg;
+      // console.log('this is outside of the writeFile function:', greyImg);
+
+      fs.writeFile(`${__dirname}/../../assets/test-bitmap.bmp`, bmp.allData, (err) => {
+        if (err) console.error(err);
+      });
+    }
+  });
+  callback;
+};
